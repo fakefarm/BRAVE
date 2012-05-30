@@ -1,0 +1,33 @@
+<%= form_for @project do |f| %>
+
+<% if @project.errors.any? %>
+<div class="error_messages">
+  <h2>Form is invalid</h2>
+  <ul>
+    <% @project.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<br/>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br/>
+<br/>
+<%= f.label :client_email %>
+<%= f.text_field :client_email %>
+<br/>
+<br/>
+<%= f.label "Project Status" %>
+<%= f.check_box :is_active %>
+<br/>
+<br/>
+<%= f.label :project_amount %>
+<%= f.text_field :project_amount %>
+<br/>
+<%= f.submit  %>
+<% end %>

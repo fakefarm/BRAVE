@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= flash[:notice] %>
+<%= flash[:alert] %>
+<%= link_to "Dashboard", projects_url %>
+<%= link_to "New Project", new_project_url %>
+<%= link_to "Users", projects_url %>
+
+<%= link_to "Sign Up", new_user_url %>
+<%= link_to "Log In", new_session_url %>
+<%= link_to "Sign Out", signout_url %>
+
 
 <%= yield %>
 
