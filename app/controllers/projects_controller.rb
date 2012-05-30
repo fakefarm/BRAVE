@@ -6,11 +6,24 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @agreement = Agreement.new
   end
   
   def create
+
     @project = Project.new(params[:project])
+      
     if @project.save
+      Agreement.create title: "Group Admin", description: "I'm the Admin of this Project", is_admin: true, project_id: @project.id, user_id: session[:uid]
+      redirect_to projects_url
+      return
+    else
+      flash.now alert: "Something has gone terribly wrong"
+      render "new"
+    end
+    
+    @agreement = Agreement.new(params[:agreement])
+    if @agreement.save
       redirect_to projects_url
     else
       flash.now alert: "Something has gone terribly wrong"
@@ -23,6 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  @project = Project.new(:project)
+  @project = Project.find_by_id(params[:id])
+  @agreement = Agreement.new
   end
 end

@@ -1,2 +1,13 @@
-<h1>Projects#show</h1>
+<h1><%= @project.title.capitalize %></h1>
 
+<h3>Users in this project</h3>
+<ul>
+  <% @project.agreements.each do |agreement|  %>
+  <li><%= agreement.user.name.capitalize %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
+  <% end %>
+</ul>
+
+
+
+<h3>Send Agreement to User</h3>
+<%# render 'agreement_form' %>
