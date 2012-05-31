@@ -3,10 +3,11 @@
 <h3>Users in this project</h3>
 <ul>
   <% @project.agreements.each do |agreement|  %>
-  <li><%= agreement.user.name.capitalize %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
+  <li> Edit Agreement >> <%= link_to agreement.user.name.capitalize, edit_agreement_url(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
   <% end %>
 </ul>
 
+<%= link_to "Add new agreement", new_agreement_url(project: project.id) %>
 
 
 <h3>Send Agreement to User</h3>

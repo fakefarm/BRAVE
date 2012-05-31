@@ -1,4 +1,4 @@
-<%= form_for @agreement, url: project_url(:post_type => "create") do |f| %>
+<%= form_for @agreement do |f| %>
 
 <% if @agreement.errors.any? %>
 <div class="error_messages">
@@ -14,6 +14,7 @@
 
 <br/>
 <p>Who is this for?</p>
+<%= f.hidden_field :project_id%>
 <%= f.collection_select :user_id, User.all, :id, :name %>
 <br/>
 <%= f.label :title %>
