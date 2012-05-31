@@ -14,7 +14,6 @@
 
 <br/>
 <p>Who is this for?</p>
-<%= f.hidden_field :project_id%>
 <%= f.collection_select :user_id, User.all, :id, :name %>
 <br/>
 <%= f.label :title %>
@@ -31,5 +30,6 @@
 <%= f.label :user_amount %>
 <%= f.text_field :user_amount %>
 <br/>
+<%= f.hidden_field :project_id, value: @project.id %>
 <%= f.submit  %>
 <% end %>
