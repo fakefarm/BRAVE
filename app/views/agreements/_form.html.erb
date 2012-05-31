@@ -13,9 +13,9 @@
 
 
 <br/>
-<%= f.hidden_field :user_id%>
-<%= f.hidden_field :project_id%>
-
+<%= f.collection_select :user_id, User.all, :id, :name %>
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :project_id %>
 <br/>
 <%= f.label :title %>
 <%= f.text_field :title %>
