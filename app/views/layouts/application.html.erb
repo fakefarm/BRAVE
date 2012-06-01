@@ -5,20 +5,24 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<%= flash[:notice] %>
-<%= flash[:alert] %>
-<%= link_to "Dashboard", projects_url %>
-<%= link_to "New Project", new_project_url %>
-<%= link_to "Users", projects_url %>
-
-<%= link_to "Sign Up", new_user_url %>
-<%= link_to "Log In", new_session_url %>
-<%= link_to "Sign Out", signout_url %>
-
+<div class="container">
+  <div class="headNav">
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>
+  <%= link_to "Dashboard", projects_url %>
+  <%= link_to "New Project", new_project_url %>
+  <% if session[:uid] == nil %>
+    <%= link_to "Sign Up", new_user_url %>
+    <%= link_to "Log In", new_session_url %>
+  <% else %>
+    <%= link_to "Sign Out", signout_url %>
+  <% end %>
+  </div>
 
 <%= yield %>
-
+  </div>
 </body>
 </html>
