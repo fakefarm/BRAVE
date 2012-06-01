@@ -1,10 +1,13 @@
 <h1><%= @project.title.capitalize %></h1>
 
 <h3>Users in this project</h3>
+<h4>Total Cost: $<%= @project.project_amount %>
 <ul>
   <% @project.agreements.each do |agreement|  %>
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
+  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)DAVE MAKE THIS WORK $$$$<% end %> : $<%= agreement.user_amount %></li>
   <% end %>
 </ul>
+
+
 <h2>Send Agreement to User</h2>
 <%= render '/agreements/form' %>
