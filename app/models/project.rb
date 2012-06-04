@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
    has_many :agreements
    has_many :users, :through => :agreements
    
+  validates_presence_of :title
    
    def admin
     admin_agreement_array = self.agreements.find(:all, :conditions => { :is_admin => true})
