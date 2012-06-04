@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  
+  before_filter :require_sign_in
+  
   def index
     @projects = Project.all
     @project = Project.new
