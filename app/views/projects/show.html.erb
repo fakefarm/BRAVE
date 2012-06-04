@@ -4,7 +4,7 @@
 <h4>Total Cost: $<%= @project.project_amount %>
 <ul>
   <% @project.agreements.each do |agreement|  %>
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %> : $<%= agreement.user_amount %></li>
+  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
   <% end %>
 </ul>
 
