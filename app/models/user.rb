@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
   
   has_many :agreements
   has_many :projects, :through => :agreements
-  
+
 end
