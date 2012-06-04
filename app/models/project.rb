@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
    
    has_many :agreements
    has_many :users, :through => :agreements
-   
+
   validates_presence_of :title
    
 
