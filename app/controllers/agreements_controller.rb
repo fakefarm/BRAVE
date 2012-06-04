@@ -1,16 +1,6 @@
 class AgreementsController < ApplicationController
   
   before_filter :require_login
-  def require_login
-       @user = User.find_by_id(session[:uid])
-       if @user.nil?
-         redirect_to root_url, notice: "Please Log In"
-       end
-    end
-  
-  # before_filter :authorize_user
-  
- 
   
   
   def index
