@@ -9,11 +9,11 @@
 	</ul>
 <% end %>
 
-<% if @user.agreements.present? %>
+<% if @user.agreements.find(:all, :conditions => {:is_admin => false}).present? %>
 	<h2>Member Projects</h2>
 	<ul>
 		<% @user_projects.each do |project| %>
-			<% if !project.admin == @user.name  %>
+			<% if project.admin != @user.name  %>
 			<li><%= link_to project.title, projects_path(project.id) %> | 
 				<span>Project Admin: <%= project.admin %><% end %></span>
 			</li>
