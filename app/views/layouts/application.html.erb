@@ -17,16 +17,13 @@
   <%= flash[:notice] %>
   <%= flash[:alert] %>  
   <br>
-	<% if @user %>
+	<% if session[:uid] %>
   <%= link_to "User Dashboard", user_url(@user.id) %>
   <%= link_to "New Project", new_project_url %>
 	<% end %>
-  <% if session[:uid] == nil %>
-    <%= link_to "Sign Up", "http://localhost:3000/signup" %>
-    <%= link_to "Log In", new_session_path %>
-  <% else %>
-    <%= link_to "Sign Out", signout_url %>
-  <% end %>
+  <%= link_to "Sign Up", new_user_url %>
+  <%= link_to "Log In", new_session_path %>
+  <%= link_to "Sign Out", signout_url %>
   </div>
 
 <%= yield %>
