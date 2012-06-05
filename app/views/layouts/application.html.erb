@@ -12,8 +12,10 @@
   <div class="headNav">
   <%= flash[:notice] %>
   <%= flash[:alert] %>
-  <%= link_to "Dashboard", projects_url %>
+	<% if @user %>
+  <%= link_to "Dashboard", user_path(@user.id) %>
   <%= link_to "New Project", new_project_url %>
+	<% end %>
   <% if session[:uid] == nil %>
     <%= link_to "Sign Up", new_user_url %>
     <%= link_to "Log In", new_session_url %>
