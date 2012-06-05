@@ -1,6 +1,6 @@
 class AgreementsController < ApplicationController
   
-  before_filter :require_login
+  before_filter :require_sign_in
   
   
   def index
@@ -31,10 +31,11 @@ class AgreementsController < ApplicationController
   def create
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
+        Notifier.invitation(@agreement).deliver
         redirect_to projects_url
       else
-        flash.now alert: "Something has gone terribly wrong"
-        render "new"
+        # flash.now alert: "Something has gone terribly wrong"
+        render :text  => "stop"
       end
   end
 end
