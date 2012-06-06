@@ -2,7 +2,6 @@ class AgreementsController < ApplicationController
   
   before_filter :require_sign_in
   
-  
   def index
     # @agreements = Agreement.find_all_by_project_id(params[:project_id])
     @agreements = Agreement.all
@@ -32,13 +31,13 @@ class AgreementsController < ApplicationController
   def create
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
-        Notifier.invitation(@agreement).deliver
         redirect_to projects_url
       else
-        flash.now alert: "Something has gone terribly wrong"
-        render :text  => "stop  "
+        flash[:notice] =  "Something has gone terribly wrong"
+        render :text  => "stop"
       end
   end
+  
   def destroy
       @agreement = Agreement.find_by_id(params[:id])
       @agreement.destroy

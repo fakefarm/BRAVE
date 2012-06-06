@@ -7,4 +7,16 @@ class Agreement < ActiveRecord::Base
   
   validates_presence_of :title
   
+  before_create :invite
+  
+  def invite
+     if params[:user_id].exists
+       self.find_by_id(params[:id])
+     Notifier.invitation(self).deliver
+     else 
+     end
+   end
+  
+  
+  
 end

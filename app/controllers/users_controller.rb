@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_filter :require_sign_in, :except  => [:new, :create, :root]
+
 
   def index
     @users = User.all
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, notice: "Thank you for signing up! Please log in."
     else
-      render "new"
+      render text: "new"
     end
   end
 end

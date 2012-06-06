@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+   before_filter :require_sign_in, :except  => [:new, :create]
+  
   def new
   end
   

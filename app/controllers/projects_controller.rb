@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
-  
 
   before_filter :require_sign_in
-
 
   before_filter :user_belongs_to_project, :only => :show
   
