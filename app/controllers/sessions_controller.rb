@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   
-   before_filter :require_sign_in, :except  => [:new, :create]
   
   def new
   end
@@ -14,7 +13,7 @@ class SessionsController < ApplicationController
        flash[:alert] = "Email or password is invalid"
        render "new"
      end
-   end
+  end
 
    def destroy
      session[:uid] = nil
