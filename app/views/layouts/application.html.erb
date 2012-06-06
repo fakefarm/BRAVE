@@ -8,6 +8,7 @@
   <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<<<<<<< HEAD
 <div class="container">
   <div class="headNav">
   <%= flash[:notice] %>
@@ -21,6 +22,18 @@
     <%= link_to "Sign Out", signout_url %>
   <% end %>
   </div>
+=======
+<%= flash[:notice] %>
+<%= flash[:alert] %>
+<%= link_to "Dashboard", projects_url %>
+<%= link_to "New Project", new_project_url %>
+<% if session[:uid] == nil %>
+  <%= link_to "Sign Up", new_user_url %>
+  <%= link_to "Log In", new_session_url %>
+<% else %>
+  <%= link_to "Sign Out", signout_url %>
+<% end %>
+>>>>>>> 8dd7d7e544d85cf5214f12b21c97f2a6fae2f100
 
 <%= yield %>
   </div>

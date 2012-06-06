@@ -14,6 +14,8 @@
 
 <br/>
 <%= f.collection_select :user_id, User.all, :id, :name %>
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :project_id %>
 <br/>
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -29,7 +31,5 @@
 <%= f.label :user_amount %>
 <%= f.text_field :user_amount %>
 <br/>
-<%= f.hidden_field :project_id, value: @project.id %>
-<%= f.hidden_field :is_admin, value: false %>
 <%= f.submit  %>
 <% end %>
