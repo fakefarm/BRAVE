@@ -1,7 +1,8 @@
 <h1>Agreements#index</h1>
 <ul>
 <% @agreements.each do |agreement| %>
-<li><%= link_to agreement.title, agreement_url(agreement.id) %></li>
+<li><%= link_to agreement.title, agreement_url(agreement.id) %>
+<%= link_to "Delete", agreement_url(agreement.id), :method => :delete %> </li>
 <% end %>
 </ul>
 <%= link_to "New Agreement", new_agreement_url %>

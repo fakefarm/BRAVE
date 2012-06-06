@@ -1,2 +1,24 @@
 <h1><%= @user.name %></h1>
 
+<% if @user.agreements.find(:all, :conditions => {:is_admin => true}).present? %>
+	<h2>Admin Projects</h2>
+	<ul>
+		<% @user_projects.each do |project| %>
+		<li><%- if project.admin == @user.name  %><%= link_to project.title, project_path(project.id) %><% end %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if @user.agreements.find(:all, :conditions => {:is_admin => false}).present? %>
+	<h2>Member Projects</h2>
+	<ul>
+		<% @user_projects.each do |project| %>
+			<% if project.admin != @user.name  %>
+			<li><%= link_to project.title, project_path(project.id) %> | 
+				<span>(Admin: <%= link_to project.admin, project.admin %><% end %>)</span>
+			</li>
+			<% end %>
+	</ul>
+<% else %>
+	<h2>You aren't a member of any projects</h2>
+<% end %>

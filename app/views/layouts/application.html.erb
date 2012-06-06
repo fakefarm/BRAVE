@@ -9,6 +9,7 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="container">
   <div class="headNav">
   <%= flash[:notice] %>
@@ -28,12 +29,30 @@
 <%= link_to "Dashboard", projects_url %>
 <%= link_to "New Project", new_project_url %>
 <% if session[:uid] == nil %>
+=======
+  <%= link_to "BRAVE Dashboard", projects_url %>
+  <%= link_to "BRAVE users", users_url %>
+  <%= link_to "BRAVE agreements", agreements_url %>
+  
+<div class="container">
+  <div class="headNav">
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>  
+  <br>
+	<% if session[:uid] %>
+  <%= link_to "User Dashboard", user_url(@user.id) %>
+  <%= link_to "New Project", new_project_url %>
+	<% end %>
+>>>>>>> 85dc79753c511157d6b9730936c3cd904d6ac5da
   <%= link_to "Sign Up", new_user_url %>
-  <%= link_to "Log In", new_session_url %>
-<% else %>
+  <%= link_to "Log In", new_session_path %>
   <%= link_to "Sign Out", signout_url %>
+<<<<<<< HEAD
 <% end %>
 >>>>>>> 8dd7d7e544d85cf5214f12b21c97f2a6fae2f100
+=======
+  </div>
+>>>>>>> 85dc79753c511157d6b9730936c3cd904d6ac5da
 
 <%= yield %>
   </div>
