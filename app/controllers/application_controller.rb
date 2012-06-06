@@ -1,13 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def is_signed_in?
-    if @user = User.find_by_id(session[:uid])
-    return true
-    else
-    return false
-    end
-  end
+  before_filter :require_sign_in
 
   def require_sign_in
     @user = User.find_by_id(session[:uid])
