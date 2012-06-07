@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
 
-  def index
+  # before_filter :require_sign_in
 
+  def index
+    
   end
 
   def about

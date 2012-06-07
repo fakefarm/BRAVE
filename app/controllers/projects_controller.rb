@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
 
   before_filter :require_sign_in
-
-  before_filter :user_belongs_to_project, :only => :show
   
   def user_belongs_to_project
     agreement = Agreement.find_by_user_id_and_project_id(@user.id, params[:id])

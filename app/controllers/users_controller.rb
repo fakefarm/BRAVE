@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :require_sign_in, :except => [:new, :create]
-  
+
   def index
     @users = User.all
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
+    @user = current_user
     @user_projects = @user.projects
   end
   

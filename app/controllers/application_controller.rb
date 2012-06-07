@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  helper_method :current_user
 
-  before_filter :require_sign_in
+  def current_user
+    @user ||= User.find(session[:uid]) if session[:uid]
+  end
 
   def require_sign_in
-    if @user.nil?
-      redirect_to root_url, notice: 'Please sign in first!'
-    else
-    @user = User.find_by_id(session[:uid])
-    end
+    redirect_to new_session_url, notice: "Please Login" unless session[:uid]
   end
-  
+
 
 end
