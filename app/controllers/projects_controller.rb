@@ -28,9 +28,9 @@ class ProjectsController < ApplicationController
   end
   
   def create
-    @project = Project.new(params[:project])  
+    @project = Project.new(params[:project])
     if @project.save
-      Agreement.create title: "Group Admin", description: "I'm the Admin of this Project", is_admin: true, project_id: @project.id, user_id: session[:uid]
+      Agreement.create title: "Group Admin", description: "I'm the Admin of this Project", is_admin: true, project_id: @project.id, user_id: session[:uid], is_active_user: true, is_active_admin: true
       redirect_to projects_url
       return
     else
@@ -46,6 +46,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find_by_id(params[:id])
     @agreement = Agreement.new
-  else
+    @project_agreements = @project.agreements
+    @user_inactive_agreement = Agreement.where({user_id: current_user, project_id: params[:id], is_active_user: false}).first
   end
 end

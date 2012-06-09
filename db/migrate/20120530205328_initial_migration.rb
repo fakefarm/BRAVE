@@ -34,7 +34,6 @@ class InitialMigration < ActiveRecord::Migration
       t.integer :user_id
       t.boolean :is_admin
       t.integer :user_amount
-
       t.timestamps
     end
   end

@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url, notice: "Please Login" unless session[:uid]
   end
 
+  def is_super_admin
+    #Essentially makes "The Boss" from seed data our super user...
+    redirect_to root_url, notice: "You shall not pass" unless current_user == User.first
+  end
 
 end

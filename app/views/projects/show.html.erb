@@ -1,14 +1,36 @@
 <h1><%= @project.title.capitalize %></h1>
-
+<% if !@user_inactive_agreement.nil? %>
+	<h3>Pending Agreements</h3>
+	<%= link_to @user_inactive_agreement.title, agreement_path(@user_inactive_agreement.id) %>
+<% end %>
 <h3>Users in this project</h3>
 <h4>Total Cost: $<%= @project.project_amount %>
 <ul>
   <% @project.agreements.each do |agreement|  %>
 
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)DAVE MAKE THIS WORK $$$$<% end %> : $<%= agreement.user_amount %></li>
+  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
 
   <% end %>
 </ul>
+
+
+<% if @user == @project.admin %>
+<% @project_agreements.each do |agreement| %>
+<ul>
+	<% if agreement.is_active? == false %>
+	<%= link_to agreement.title, agreement_path(agreement.id) %>
+	<% end %>
+<% end %>
+</ul>
+Active
+<% @project_agreements.each do |agreement| %>
+<ul>
+	<% if agreement.is_active? == true %>
+	<%= link_to agreement.title, agreement_path(agreement.id) %>
+	<% end %>
+<% end %>
+</ul>
+<% end %>
 
 
 <h2>Send Agreement to User</h2>
