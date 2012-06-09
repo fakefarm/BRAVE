@@ -20,8 +20,7 @@ class ProjectsController < ApplicationController
   end
   
   def create
-    @project = Project.new(params[:project])
-      
+    @project = Project.new(params[:project])  
     if @project.save
       Agreement.create title: "Group Admin", description: "I'm the Admin of this Project", is_admin: true, project_id: @project.id, user_id: session[:uid]
       redirect_to projects_url

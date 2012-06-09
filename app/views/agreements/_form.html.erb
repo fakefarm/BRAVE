@@ -13,7 +13,7 @@
 
 
 <br/>
-<%= f.collection_select :user_id, User.all, :id, :name %>
+<%= f.collection_select :invitee_id, User.all, :id, :name %>
 <br/>
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -30,6 +30,7 @@
 <%= f.text_field :user_amount %>
 <br/>
 <%= f.hidden_field :project_id, value: @project.id %>
-<%= f.hidden_field :is_admin, value: false %>
+<%= f.hidden_field :user_id, value: @project.users.first.id %>
+
 <%= f.submit  %>
 <% end %>
