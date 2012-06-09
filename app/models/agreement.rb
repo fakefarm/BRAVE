@@ -4,7 +4,7 @@ class Agreement < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :project
-  belongs_to :invitee, class_name: "User" 
+  # belongs_to :invitee, class_name: "User" 
   
   validates :title, presence: true
 
