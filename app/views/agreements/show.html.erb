@@ -16,7 +16,5 @@ git
 		<%= f.submit %>
 	<% end %>
 
-
-
 	 Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
 <% end %>

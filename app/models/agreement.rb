@@ -8,6 +8,8 @@ class Agreement < ActiveRecord::Base
   
   validates :title, presence: true
 
+
+
   def is_active?
     if self.is_active_user == true && self.is_active_admin == true
       return true
