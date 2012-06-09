@@ -23,7 +23,7 @@ if Rails.env.development?
   projects.each do |project|
     Agreement.create title: "Project Manager", description: "I'm in charge of everything", 
                      content: "I'll do such and such, make sure such and such is great, and I'll also provide the beer and donuts",
-                     user_id: project_manager.id, project_id: project.id, is_admin: true, user_amount: 1000
+                     user_id: project_manager.id, project_id: project.id, is_admin: true, user_amount: 1000, is_active_admin: false, is_active_admin: false
     end
 puts "BE BRAVE GENTLEMEN. THIS GUILD ISN'T GOING TO BUILD ITSELF...oh, and also, data has been added"
 end
