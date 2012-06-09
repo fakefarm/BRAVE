@@ -4,19 +4,19 @@ git
 <h3><%= @agreement.description %></h3>
 <h4><%= @agreement.content %></h4>
 
-<%= form_for @agreement do |f| %>
-<% if @project.admin == current_user %>
-Admin agrees?
-<%= f.radio_button :is_active_admin, :true %>
-<% else %>
-User agrees?
-<%= f.radio_button :is_active_user, :true %>
-<% end %>
-<%= f.submit %>
-<% end %>
-<ul>
-  <li> Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %></li>
-</ul>
+<% if @agreement.is_active? == false %>	
+	<%= form_for @agreement do |f| %>
+	<% if @project.admin == current_user %>
+		Admin agrees?
+		<%= f.radio_button :is_active_admin, :true %>
+	<% else %>
+		User agrees?
+		<%= f.radio_button :is_active_user, :true %>
+		<% end %>
+		<%= f.submit %>
+	<% end %>
 
-<%= link_to "Add new agreement", new_agreement_url(@agreement.project_id) %>
 
+
+	 Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
+<% end %>
