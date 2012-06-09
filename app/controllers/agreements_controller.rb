@@ -2,6 +2,7 @@ class AgreementsController < ApplicationController
   
   before_filter :require_sign_in
   before_filter :user_belongs_to_agreement, :only  => :show
+  before_filter :is_super_admin
   
   def user_belongs_to_agreement
     @project=Agreement.find(params[:id]).project
@@ -12,7 +13,6 @@ class AgreementsController < ApplicationController
   end
   
   def index
-    # @agreements = Agreement.find_all_by_project_id(params[:project_id])
     @agreements = Agreement.all
   end
 
