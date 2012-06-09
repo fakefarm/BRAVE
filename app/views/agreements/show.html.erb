@@ -1,40 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <h1><%= @agreement.user.name.capitalize %></h1>
 
   
 <h2><%= @agreement.title %></h2>
 <h3><%= @agreement.description %></h3>
 <h4><%= @agreement.content %></h4>
-=======
-<h1>Agreements#show</h1>
-<h1><%= @agreement.title.capitalize %></h1>
-=======
-<h1><%= @agreement.user.name.capitalize %></h1>
->>>>>>> 85dc79753c511157d6b9730936c3cd904d6ac5da
 
-  
-<<<<<<< HEAD
-
->>>>>>> 8dd7d7e544d85cf5214f12b21c97f2a6fae2f100
-=======
-<h2><%= @agreement.title %></h2>
-<h3><%= @agreement.description %></h3>
-<h4><%= @agreement.content %></h4>
->>>>>>> 85dc79753c511157d6b9730936c3cd904d6ac5da
 <ul>
   <li> Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %></li>
 </ul>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-<%= link_to "Add new agreement", new_agreement_url(@agreement.project_id) %>
->>>>>>> 8dd7d7e544d85cf5214f12b21c97f2a6fae2f100
-=======
-
->>>>>>> 85dc79753c511157d6b9730936c3cd904d6ac5da
-
-
-<h3>Send Agreement to User</h3>

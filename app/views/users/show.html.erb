@@ -4,7 +4,7 @@
 	<h2>Admin Projects</h2>
 	<ul>
 		<% @user_projects.each do |project| %>
-		<li><%- if project.admin == @user.name  %><%= link_to project.title, project_path(project.id) %><% end %></li>
+		<li><%- if project.admin.name == @user.name  %><%= link_to project.title, project_path(project.id) %><% end %></li>
 		<% end %>
 	</ul>
 <% end %>
@@ -13,9 +13,9 @@
 	<h2>Member Projects</h2>
 	<ul>
 		<% @user_projects.each do |project| %>
-			<% if project.admin != @user.name  %>
+			<% if project.admin.name != current_user.name  %>
 			<li><%= link_to project.title, project_path(project.id) %> | 
-				<span>(Admin: <%= link_to project.admin, project.admin %><% end %>)</span>
+				<span>(Admin: <%= link_to project.admin.name, project.admin.name %><% end %>)</span>
 			</li>
 			<% end %>
 	</ul>

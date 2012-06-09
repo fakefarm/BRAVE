@@ -11,7 +11,8 @@ class ProjectsController < ApplicationController
   
   def user_belongs_to_project
     agreement = Agreement.find_by_user_id_and_project_id(current_user, params[:id])
-    if agreement.nil?
+    admin_agreement = Agreement.find_by_id_and_is_admin(params[:id], true)
+    if agreement.nil? && admin_agreement.nil?
       redirect_to root_url, notice: "Nice Try!"
     end
   end
