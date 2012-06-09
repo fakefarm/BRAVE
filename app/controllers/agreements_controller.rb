@@ -40,6 +40,7 @@ class AgreementsController < ApplicationController
   
   
   def create
+
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
       Notifier.invitation(@agreement).deliver

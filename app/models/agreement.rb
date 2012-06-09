@@ -16,6 +16,10 @@ class Agreement < ActiveRecord::Base
     end
   end
   
+  def admin
+    self.project.admin
+  end
+  
   def is_active_admin?
     if self.is_active_admin == true
       return true

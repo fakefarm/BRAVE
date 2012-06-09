@@ -6,7 +6,7 @@
 <h3>Users in this project</h3>
 <h4>Total Cost: $<%= @project.project_amount %>
 <ul>
-  <% @project.agreements.each do |agreement|  %>
+  <% @project.agreements.each do |agreement| %>
 
   <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
 
@@ -15,23 +15,24 @@
 
 
 <% if @user == @project.admin %>
-<% @project_agreements.each do |agreement| %>
+Pending Agreements
 <ul>
-	<% if agreement.is_active? == false %>
-	<%= link_to agreement.title, agreement_path(agreement.id) %>
+<% @project_agreements.each do |agreement| %>
+	<% if agreement.is_active? == false  %>
+	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
 	<% end %>
 <% end %>
 </ul>
-Active
-<% @project_agreements.each do |agreement| %>
-<ul>
-	<% if agreement.is_active? == true %>
-	<%= link_to agreement.title, agreement_path(agreement.id) %>
-	<% end %>
-<% end %>
-</ul>
-<% end %>
 
+Active
+<ul>
+<% @project_agreements.each do |agreement| %>
+	<% if agreement.is_active? == true && agreement.is_admin == false %>
+	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
+	<% end %>
+<% end %>
+</ul>
+<% end %>
 
 <h2>Send Agreement to User</h2>
 <%= render '/agreements/form' %>
