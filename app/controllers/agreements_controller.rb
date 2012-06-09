@@ -42,7 +42,7 @@ class AgreementsController < ApplicationController
   def create
     @agreement = Agreement.new(params[:agreement])
     if @agreement.save
-      redirect_to projects_url
+      redirect_to project_path(@agreement.project.id)
     else
       flash[:notice] =  "Something has gone terribly wrong"
       render :text  => "stop"
