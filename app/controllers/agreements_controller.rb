@@ -1,6 +1,15 @@
 class AgreementsController < ApplicationController
   
   before_filter :require_sign_in
+  before_filter :user_belongs_to_agreement, :only  => :show
+  
+  def user_belongs_to_agreement
+    @project=Agreement.find(params[:id]).project
+    agreement = Agreement.find_by_user_id_and_id(current_user, params[:id])
+      if agreement.nil? && @project.admin != current_user
+      redirect_to root_url, notice: "Nice Try!"
+    end
+  end
   
   def index
     # @agreements = Agreement.find_all_by_project_id(params[:project_id])
