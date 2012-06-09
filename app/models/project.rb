@@ -11,5 +11,6 @@ class Project < ActiveRecord::Base
     admin_agreement_array = self.agreements.find(:all, :conditions => { :is_admin => true})
     admin = admin_agreement_array[0].user
   end
+
   
 end

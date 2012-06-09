@@ -31,6 +31,8 @@
 <br/>
 <%= f.hidden_field :project_id, value: @project.id %>
 <%= f.hidden_field :is_admin, value: false %>
+<%= f.hidden_field :is_active_admin, value: false %>
+<%= f.hidden_field :is_active_user, value: false %>
 <br/>
 <br />
 <%= f.submit  %>

@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @user_projects = @user.projects
-    @pending_admin_agreements = @user.pending_admin_agreements
-    @pending_user_agreements = @user.pending_user_agreements
   end
   
   def create
