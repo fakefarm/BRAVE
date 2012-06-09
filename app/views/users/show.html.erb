@@ -22,3 +22,19 @@
 <% else %>
 	<h2>You aren't a member of any projects</h2>
 <% end %>
+
+<% if !@user.pending_admin_agreements.empty? %>
+	<h3>Pending ADMIN Agreements</h3>
+	<ul>
+		<% @pending_admin_agreements.each do |agreement| %>
+		<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
+	</ul>
+		<% end %>
+<% elsif !@user.pending_user_agreements.empty? %>
+	<h3>Pending DUTY Agreements</h3>
+	<ul>
+		<% @pending_user_agreements.each do |agreement| %>
+		<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
+		<% end %>
+	</ul>
+<% end %>

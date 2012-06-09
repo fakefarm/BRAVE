@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(:version => 20120609155430) do
     t.integer  "user_id"
     t.boolean  "is_admin"
     t.integer  "user_amount"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "invitee_id"
-    t.boolean  "is_active"
+    t.boolean  "is_active_admin"
+    t.boolean  "is_active_user"
   end
 
   create_table "clients", :force => true do |t|

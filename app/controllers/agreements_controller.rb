@@ -22,18 +22,20 @@ class AgreementsController < ApplicationController
 
   def edit
     @agreement = Agreement.find_by_id(params[:id])
+    @project  = @agreement.project
   end
 
   def show
     @agreement = Agreement.find_by_id(params[:id])
     @agreements = Agreement.find_all_by_project_id(params[:project_id])
+    @project = @agreement.project
   end
   
   def update
     @agreement = Agreement.find_by_id(params[:id])
     @agreement.update_attributes(params[:agreement])
     @agreement.save
-      redirect_to projects_url
+    redirect_to project_path(@agreement.project.id)
   end
   
   
