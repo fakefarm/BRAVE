@@ -40,7 +40,8 @@ class AgreementsController < ApplicationController
   def create
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
-        redirect_to projects_url
+      Notifier.invitation(@agreement).deliver
+      redirect_to projects_url
       else
         flash[:notice] =  "Something has gone terribly wrong"
         render :text  => "stop"
