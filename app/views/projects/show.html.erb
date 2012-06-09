@@ -27,7 +27,7 @@ Pending Agreements
 Active
 <ul>
 <% @project_agreements.each do |agreement| %>
-	<% if agreement.is_active? == true %>
+	<% if agreement.is_active? == true && agreement.is_admin == false %>
 	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
 	<% end %>
 <% end %>

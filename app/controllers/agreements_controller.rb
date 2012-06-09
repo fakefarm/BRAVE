@@ -40,13 +40,16 @@ class AgreementsController < ApplicationController
   
   
   def create
-    @agreement = Agreement.new(params[:agreement])
-    if @agreement.save
-      redirect_to project_path(@agreement.project.id)
-    else
-      flash[:notice] =  "Something has gone terribly wrong"
-      render :text  => "stop"
-    end
+
+      @agreement = Agreement.new(params[:agreement])
+      if @agreement.save
+      Notifier.invitation(@agreement).deliver
+      redirect_to projects_url
+      else
+        flash[:notice] =  "Please include relevant information"
+        redirect_to project_path(@agreement.project.id)
+      end
+      
   end
   
   def destroy
