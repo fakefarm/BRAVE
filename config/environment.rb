@@ -6,8 +6,8 @@ ActionMailer::Base.smtp_settings = {
 :password => "rose1221",
 :domain => "endeavorequity.com",
 :address => "smtp.sendgrid.net",
-:port => 587,
-:authentication => :plain,
+:port => "587",
+:authentication => "plain",
 :enable_starttls_auto => true
 }
 
