@@ -22,7 +22,10 @@ a {
 	background: #FFF;
 	padding: 3px; 
 	text-decoration: none;
-	color: #6CF; }
+	color: #6CF; 
+  width: 900px;
+	text-align: right;
+	}
 	
 
 

@@ -7,10 +7,14 @@
 		<%= csrf_meta_tags %>
 		<link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
 	</head>
+	  
 	<body>
+		<% if current_user != nil && current_user.role == "Superuser" %>
 		<%= link_to "BRAVE Dashboard", projects_url %>
 		<%= link_to "BRAVE users", users_url %>
 		<%= link_to "BRAVE agreements", agreements_url %>
+		<% else %>
+		<% end %>
 		<div class="container">
 			<div class="headNav">
 			<%= flash[:notice] %>
@@ -24,6 +28,7 @@
 			<%= link_to "Sign Up", new_user_url %>
 			<%= link_to "Log In", new_session_path %>
 			<% end %>
+		
 			</div>
 			<%= yield %>
 		</div>

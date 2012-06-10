@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @roles=Role.all
+    
   end
 
   def edit
