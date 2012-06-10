@@ -4,14 +4,24 @@ if Rails.env.development?
   Agreement.destroy_all
   Role.destroy_all
   
+  ROLES={
+  1 => "Web Developer",
+  2 => "Web Designer",
+  3 => "UX",
+  4 => "Content Specialist",
+  5 => "Sales & Business",
+} 
+  
   names = { "The Boss" => "boss@boss.com", "regina" => "regina@regina.com", "peter" => "peter@peter.com", "homer" => "homer@homer.com",
             "elmer" => "elmer@elmer.com", "stewey"=> "stewey@stewey.com", "betty" => "betty@betty.com", 
             "bob" => "bob@bob.com", "lisa" => "lisa@lisa.com" }
-  names.each { |name, email|  User.create name: name, email: email, role: rand(1..5), password: "tree", password_confirmation: "tree" }
+  names.each { |name, email|  User.create name: name, email: email, role: ROLES[rand(1..5)], password: "tree", password_confirmation: "tree" }
   client = Client.create name: "Client", email: "Client@client.com"
   
   
   rand(1000..5000)
+  
+  
   
   Project.create title: "Rails Project", client_email: client.email, client_id: client.id, is_active: true, project_amount: rand(1000..5000)
   Project.create title: "WordPress Project", client_email: client.email, client_id: client.id, is_active: true, project_amount: rand(1000..5000)

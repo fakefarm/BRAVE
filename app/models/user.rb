@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :agreements
   has_many :projects, :through => :agreements
   has_many :roles
+  
+  has_one :ranking
+  
+  has_many :votes
 
   # validates :name,  presence: true, length: { maximum: 50 }
   #  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

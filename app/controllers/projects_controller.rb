@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    @projects = Agreement.find_all_by_project_id(params[:project_id])
     @project = Project.new
   end
 
