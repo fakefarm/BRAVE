@@ -33,7 +33,8 @@ Active
 <% end %>
 </ul>
 <% end %>
-
+<% if current_user == @project.admin %>
 <h2>Send Agreement to User</h2>
 <%= render '/agreements/form' %>
+<% end %>
 

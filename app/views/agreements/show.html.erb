@@ -1,5 +1,4 @@
 <h1><%= @agreement.user.name.capitalize %></h1>
-git 
 <h2><%= @agreement.title %></h2>
 <h3><%= @agreement.description %></h3>
 <h4><%= @agreement.content %></h4>
@@ -18,5 +17,5 @@ git
 
 
 
-	 Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
+	<%= link_to "Edit Agreement", edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
 <% end %>

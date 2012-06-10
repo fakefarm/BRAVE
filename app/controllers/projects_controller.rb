@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       Agreement.create title: "Group Admin", description: "I'm the Admin of this Project", is_admin: true, project_id: @project.id, user_id: session[:uid], is_active_user: true, is_active_admin: true
-      redirect_to projects_url
+      redirect_to projects_path(@project.id)
       return
     else
       flash.now alert: "Something has gone terribly wrong"
