@@ -22,13 +22,15 @@
 <%= f.text_field :client_email %>
 <br/>
 <br/>
-<%= f.label "Project Status" %>
-<%= f.check_box :is_active %>
-<br/>
-<br/>
 <%= f.label :project_amount %>
 <%= f.text_field :project_amount %>
 <br/>
+<br/>
+<%= f.label "Activate for Client Viewing" %>
+<%= f.check_box :is_active,  :checked => false %>
+<br/>
+
+
 
 <%= f.submit  %>
 <% end %>

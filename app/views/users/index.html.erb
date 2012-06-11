@@ -1,9 +1,15 @@
-<h1>All of our users</h1>
-<div class"users">
+<h1>Other Brave Members</h1>
+
+<% if @users %>
+<h2><%= @users.first.role %></h2>
+<%end %>
+
+
+<div class="users">
   <% @users.each do |user| %>
 <ul> 
   <li><%= link_to user.name, user_url(user.id) %></li>
-  <li><img width="50" class="photo" alt="dummypic" src="assets/pic.png"></li>
+  <li><img width="50" class="photo" alt="dummypic" src="assets/pic<%= rand(1..7)%>.png"></li>
 </ul>
   <% end %>
 </div>

@@ -29,11 +29,13 @@ Active
 <% @project_agreements.each do |agreement| %>
 	<% if agreement.is_active? == true && agreement.is_admin == false %>
 	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
+  <p> Rank Member<li> agreement.user.name.capitalize</li>'s Performance: </p>
 	<% end %>
 <% end %>
 </ul>
 <% end %>
-
+<% if current_user == @project.admin %>
 <h2>Send Agreement to User</h2>
 <%= render '/agreements/form' %>
+<% end %>
 

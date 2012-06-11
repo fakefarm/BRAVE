@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_filter :require_sign_in, :except => [:new, :create] 
 
   def index
-    if params[:role][:classification]
-      @users=User.find_all_by_role(params[:role][:classification])
+    if params[:role][:description]
+      @users=User.find_all_by_role(params[:role][:description])
     else
     @users = User.all
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.create params[:user]
-    @user.role = params[:role][:classification]
+    @user.role = params[:role][:description]
     if @user.save
       redirect_to root_url, notice: "Thank you for signing up! Please log in."
     else
