@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :agreements
   has_many :projects, :through => :agreements
   has_many :roles
+  has_many :messages
   
   has_one :ranking
   
