@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    @vote=Vote.new
     @projects = Project.all
     @project = Project.new
   end
@@ -44,6 +45,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @vote=Vote.new
     @project = Project.find_by_id(params[:id])
     @agreement = Agreement.new
     @project_agreements = @project.agreements

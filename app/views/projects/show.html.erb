@@ -8,11 +8,19 @@
 <ul>
   <% @project.agreements.each do |agreement| %>
 
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
+  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)</li>
 
-  <% end %>
 </ul>
-
+  <%else %>
+    <%= form_for @vote do |f| %>
+    <p>Rank Brave Member's Performance: </p>
+     <p><img width="15" class="photo" alt="rating" src="assets/reddown.png"><input type="range" name=rank value=<%=agreement.user_id%><img width="15" class="photo" alt="rating" src="assets/greenup.png"></p>
+        <%= f.hidden_field :voter_id, value: current_user.id  %>
+        <%= f.hidden_field :votee_id, value: agreement.user_id %>
+        <p class="submit"><%= f.submit "Be BRAVE!"%></p>
+      <% end %>
+    <% end %>
+  <% end %>
 
 <% if @user == @project.admin %>
 Pending Agreements
@@ -29,7 +37,7 @@ Active
 <% @project_agreements.each do |agreement| %>
 	<% if agreement.is_active? == true && agreement.is_admin == false %>
 	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
-  <p> Rank Member<li> agreement.user.name.capitalize</li>'s Performance: </p>
+
 	<% end %>
 <% end %>
 </ul>
