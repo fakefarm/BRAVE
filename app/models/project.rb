@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
    has_many :agreements, dependent: :destroy
    has_many :users, :through => :agreements
    # belongs_to :client, class_name: 'User'
+   has_many :messages
 
   validates_presence_of :title
    
