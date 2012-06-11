@@ -1,10 +1,10 @@
 <h1><%= @user.name %></h1>
 
 <div id="searchusers">
-  <form action="<%= users_url %>" method="get">
-	<label for="keyword">Search for Other Brave Souls by:</label></br>
-  <%= collection_select :role, :description, Role.all, :description, :description %>
-  <input type="submit" name="submit" value= "BE BRAVE!"> 
+	<form action="<%= users_url %>" method="get">
+		<label for="keyword">Search for Other Brave Souls by:</label></br>
+		<%= collection_select :role, :description, Role.all, :description, :description %>
+		<input type="submit" name="submit" value= "BE BRAVE!"> 
 	</form>
 </div>  
 
