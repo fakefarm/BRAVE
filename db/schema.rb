@@ -76,11 +76,12 @@ ActiveRecord::Schema.define(:version => 20120611005649) do
   end
 
   create_table "votes", :force => true do |t|
+    t.integer  "voter_id"
+    t.integer  "rank"
+    t.integer  "votee_id"
+    t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "voter_id"
-    t.integer  "votee_id"
-    t.integer  "rank"
   end
 
 end
