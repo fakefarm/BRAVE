@@ -8,10 +8,14 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(params[:message])
-    if @message.save
-      redirect_to project_messages_url
-    else
-      redirect_to root_url
+    respond_to do |format|
+      if @message.save
+        format.js
+        format.html { redirect_to project_messages_url, notice: "Message Posted" }
+      else
+        format.js
+        redirect_to root_url, notice: "Error"
+      end
     end
   end
   

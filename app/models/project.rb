@@ -13,5 +13,8 @@ class Project < ActiveRecord::Base
     admin = admin_agreement_array[0].user
   end
 
+  def client
+    User.find_by_email(self.client_email).name
+  end
   
 end
