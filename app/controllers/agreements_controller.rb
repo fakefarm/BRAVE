@@ -40,11 +40,10 @@ class AgreementsController < ApplicationController
   
   
   def create
-
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
       # Notifier.invitation(@agreement).deliver
-      redirect_to projects_url
+      redirect_to projects_url, notice:"Great Stuff"
       else
         flash[:notice] =  "Please include relevant information"
         redirect_to project_path(@agreement.project.id)

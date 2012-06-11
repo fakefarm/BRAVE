@@ -17,11 +17,15 @@
 		<% end %>
 		<div class="container">
 			<div class="headNav">
-			<%= flash[:notice] %>
+
+			<% if flash[:notice] %>
+			<%= flash[:notice]%>
+			<img width="15" class="photo" alt="dummypic" src="assets/greenup.png">
+			<%end %>
 			<%= flash[:alert] %>
 			<br>
 			<% if session[:uid] %>
-			<%= link_to current_user.name + " Dashboard", user_url(current_user) %>
+			<%= link_to current_user.name.upcase + "'s Dashboard", user_url(current_user) %>
 			<%= link_to "New Project", new_project_url %>
 			<%= link_to "Sign Out", signout_url %>
 			<% else %>
