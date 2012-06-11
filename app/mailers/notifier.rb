@@ -9,7 +9,7 @@ class Notifier <ActionMailer::Base
   def invitation(agreement)
     @agreement = agreement
 
-    mail to: "dcardella@endeavorequity.com"
+    mail to: "ajdeitrick@gmail.com"
   end
 end
 
