@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
    has_many :agreements, dependent: :destroy
    has_many :users, :through => :agreements
    # belongs_to :client, class_name: 'User'
+   has_many :messages
 
   validates_presence_of :title
    
@@ -12,5 +13,8 @@ class Project < ActiveRecord::Base
     admin = admin_agreement_array[0].user
   end
 
+  def client
+    User.find_by_email(self.client_email).name
+  end
   
 end

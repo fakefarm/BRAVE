@@ -1,4 +1,12 @@
-<h1><%= @project.title.capitalize %> </h1> 
+<h1><%= @project.title.capitalize %> </h1>
+<% if @user.is_client?(@project) %>
+	Display PAY NOW!
+<% else %>
+
+
+<% if @user == @project.admin %>
+	<%= @project.client %>
+<% end %>
 
 <h2>Total Contract Value: $<%= @project.project_amount %></h2>
 
@@ -56,3 +64,4 @@ Active
 <%= render '/agreements/form' %>
 <% end %>
 
+<% end %>
