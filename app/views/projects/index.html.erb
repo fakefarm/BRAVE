@@ -6,7 +6,7 @@
 <li><%= link_to project.title, project_url(project.id) %></li>
 
   <% if project.is_active == true %>
-
+ <img width="15" class="photo" alt="dummypic" src="assets/greenup.png">
     <ul>
       <% project.agreements.each do |agreement| %>
       <li>
