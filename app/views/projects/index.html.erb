@@ -1,5 +1,6 @@
 <h1>Project Management Dashboard</h1>
-    <h2> Rank Your Fellow Project Members</h2>
+
+<form action="<%= votes_url %>" method="post">
 <ul>
 <% @projects.each do |project| %>
 <li><%= link_to project.title, project_url(project.id) %></li>
@@ -10,7 +11,8 @@
     <% project.agreements.each do |agreement| %>
       <li>
       <p>Agreement Title: <%= agreement.title %> </p>
-      <p>Brave Member: <%= User.find_by_id(agreement.user_id).name%> </p>
+      <p>Rank Brave Member's Performance: <%= User.find_by_id(agreement.user_id).name%> </p>
+       <p><img width="15" class="photo" alt="dummypic" src="assets/reddown.png"> <input type="range" name="test" value=(agreement.user_id)><img width="15" class="photo" alt="dummypic" src="assets/greenup.png"></p>
       </li>
     <%end %>
   </ul>
@@ -18,4 +20,6 @@
 <% end %>
 
 </ul>
-<p><%= link_to "new project", new_project_url %></p>
+
+<p class="submit"><%= submit_tag "Be BRAVE!"%></p>
+</form>

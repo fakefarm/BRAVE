@@ -1,5 +1,11 @@
 Brave::Application.routes.draw do
 
+  # get "votes/new" => "votes#new"
+  # 
+  #   post "votes/create" => "votes#create", as: :votes_url
+  # 
+  #   get "votes/delete" => "votes#destroy"
+  resources :votes
   resources :users
   resources :projects
   resources :agreements
