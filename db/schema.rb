@@ -11,6 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+ActiveRecord::Schema.define(:version => 20120611195528) do
+
   create_table "agreements", :force => true do |t|
     t.string   "title"
     t.string   "description"
