@@ -8,28 +8,20 @@
   <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="container">
-  <div class="headNav">
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>  
-  <br>
-
-			<% if flash[:notice] %>
-			<%= flash[:notice]%>
-			<!-- <img width="15" class="photo" alt="dummypic" src="assets/greenup.png"> -->
-			<%end %>
-			<%= flash[:alert] %>
-			<br>
-			<% if session[:uid] %>
-			<%= link_to current_user.name.upcase + "'s Dashboard", user_url(current_user) %>
-			<%= link_to "New Project", new_project_url %>
-			<%= link_to "Sign Out", signout_url %>
-			<% else %>
-			<%= link_to "Sign Up", new_user_url %>
-			<%= link_to "Log In", new_session_path %>
-			<% end %>
-		
-			</div>
-			<%= yield %>
-		</div>
-	</body>
+  <div class="container">
+    <div class="headNav">      
+      <% flash.each do |key, msg| %>
+        <%= content_tag :div, msg, id: key %>
+      <% end %>
+      <% if session[:uid] %>
+        <%= link_to current_user.name.upcase + "'s Dashboard", user_url(current_user) %>
+        <%= link_to "New Project", new_project_url %>
+        <%= link_to "Sign Out", signout_url %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_url %>
+        <%= link_to "Log In", new_session_path %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
+</body>
