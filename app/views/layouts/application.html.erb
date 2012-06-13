@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 <head>
   <title>Brave</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -9,42 +8,11 @@
   <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <%= link_to "BRAVE Dashboard", projects_url %>
-  <%= link_to "BRAVE users", users_url %>
-  <%= link_to "BRAVE agreements", agreements_url %>
-  
 <div class="container">
   <div class="headNav">
   <%= flash[:notice] %>
   <%= flash[:alert] %>  
   <br>
-	<% if session[:uid] %>
-  <%= link_to "User Dashboard", user_url(session[:uid]) %>
-  <%= link_to "New Project", new_project_url %>
-	<% end %>
-  <%= link_to "Sign Up", new_user_url %>
-  <%= link_to "Log In", new_session_path %>
-  <%= link_to "Sign Out", signout_url %>
-  </div>
-=======
-	<head>
-		<title>Brave</title>
-		<%= stylesheet_link_tag    "application", :media => "all" %>
-		<%= javascript_include_tag "application" %>
-		<%= csrf_meta_tags %>
-		<link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
-	</head>
-	  
-	<body>
-		<% if current_user != nil && current_user.role == "Superuser" %>
-		<%= link_to "BRAVE Dashboard", projects_url %>
-		<%= link_to "BRAVE users", users_url %>
-		<%= link_to "BRAVE agreements", agreements_url %>
-		<% else %>
-		<% end %>
-		<div class="container">
-			<div class="headNav">
->>>>>>> 1396c442ca67d7d573fb02049549d2d5e349305a
 
 			<% if flash[:notice] %>
 			<%= flash[:notice]%>
