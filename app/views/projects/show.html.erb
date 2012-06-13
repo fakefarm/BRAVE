@@ -1,13 +1,67 @@
-<h1><%= @project.title.capitalize %></h1>
+<h1><%= @project.title.capitalize %> </h1>
+<% if @user.is_client?(@project) %>
+	Display PAY NOW!
+<% else %>
+
+
+<% if @user == @project.admin %>
+	<%= @project.client %>
+<% end %>
+
+<h2>Total Contract Value: $<%= @project.project_amount %></h2>
+
+<% if !@user_inactive_agreement.nil? %>
+	<h3>Pending Agreements</h3>
+	<%= link_to @user_inactive_agreement.title, agreement_path(@user_inactive_agreement.id) %>
+<% end %>
 
 <h3>Users in this project</h3>
-<h4>Total Cost: $<%= @project.project_amount %>
+
 <ul>
-  <% @project.agreements.each do |agreement|  %>
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %> <% if agreement.is_admin == true %>(Admin)<% end %></li>
+  <% @project.agreements.each do |agreement| %>
+
+  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %>
+     <% if agreement.is_admin == true %>(Admin)
+     <img width="75" class="photo" alt="pic" src="../../assets/pic<%= rand(1..7)%>.png"></li>
+</ul>
+  <%else %>
+    <%= form_for @vote do |f| %>
+    
+    <p>Rank <%=agreement.user.name.capitalize %>'s Performance:<img width="15" class="photo" alt="rating" src="../../assets/reddown.png">
+       <input type="range" name=rank value=<%=agreement.user_id%>
+       <%= image_tag "reddown.png" %>
+       <img width="15" class="photo" alt="rating" src="../../assets/greenup.png"> </p>
+        <%=   hidden_field :project_id, value: @project.id  %>
+        <%= f.hidden_field :voter_id, value: current_user.id  %>
+        <%= f.hidden_field :votee_id, value: agreement.user_id %>
+        <div class="submit"><%= f.submit "Be BRAVE!"%></div>
+      <% end %>
+    <% end %>
   <% end %>
+
+<% if @user == @project.admin %>
+Pending Agreements
+<ul>
+<% @project_agreements.each do |agreement| %>
+	<% if agreement.is_active? == false  %>
+	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
+	<% end %>
+<% end %>
 </ul>
 
+Active
+<ul>
+<% @project_agreements.each do |agreement| %>
+	<% if agreement.is_active? == true && agreement.is_admin == false %>
+	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
 
+	<% end %>
+<% end %>
+</ul>
+<% end %>
+<% if current_user == @project.admin %>
 <h2>Send Agreement to User</h2>
 <%= render '/agreements/form' %>
+<% end %>
+
+<% end %>

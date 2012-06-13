@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530205328) do
+ActiveRecord::Schema.define(:version => 20120611195528) do
 
   create_table "agreements", :force => true do |t|
     t.string   "title"
@@ -21,13 +21,31 @@ ActiveRecord::Schema.define(:version => 20120530205328) do
     t.integer  "user_id"
     t.boolean  "is_admin"
     t.integer  "user_amount"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "invitee_id"
+    t.boolean  "is_active_admin"
+    t.boolean  "is_active_user"
   end
 
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "agreement_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -42,6 +60,20 @@ ActiveRecord::Schema.define(:version => 20120530205328) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "rankings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "avgrank"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "description"
+    t.string   "classification"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -49,6 +81,15 @@ ActiveRecord::Schema.define(:version => 20120530205328) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "votes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "voter_id"
+    t.integer  "votee_id"
+    t.integer  "rank"
+    t.integer  "project_id"
   end
 
 end

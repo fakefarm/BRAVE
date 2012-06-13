@@ -1,14 +1,19 @@
 <h1><%= @agreement.user.name.capitalize %></h1>
-
-  
 <h2><%= @agreement.title %></h2>
 <h3><%= @agreement.description %></h3>
 <h4><%= @agreement.content %></h4>
-<ul>
-  <li> Edit Agreement >> <%= link_to @agreement.title.capitalize, edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %></li>
-</ul>
 
+<% if @agreement.is_active? == false %>	
+	<%= form_for @agreement do |f| %>
+	<% if @project.admin == current_user %>
+		Admin agrees?
+		<%= f.radio_button :is_active_admin, :true %>
+	<% else %>
+		User agrees?
+		<%= f.radio_button :is_active_user, :true %>
+		<% end %>
+		<%= f.submit %>
+	<% end %>
 
-
-
-<h3>Send Agreement to User</h3>
+	<%= link_to "Edit Agreement", edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
+<% end %>

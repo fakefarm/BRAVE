@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <title>Brave</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -25,8 +26,42 @@
   <%= link_to "Log In", new_session_path %>
   <%= link_to "Sign Out", signout_url %>
   </div>
+=======
+	<head>
+		<title>Brave</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
+	</head>
+	  
+	<body>
+		<% if current_user != nil && current_user.role == "Superuser" %>
+		<%= link_to "BRAVE Dashboard", projects_url %>
+		<%= link_to "BRAVE users", users_url %>
+		<%= link_to "BRAVE agreements", agreements_url %>
+		<% else %>
+		<% end %>
+		<div class="container">
+			<div class="headNav">
+>>>>>>> 1396c442ca67d7d573fb02049549d2d5e349305a
 
-<%= yield %>
-  </div>
-</body>
-</html>
+			<% if flash[:notice] %>
+			<%= flash[:notice]%>
+			<!-- <img width="15" class="photo" alt="dummypic" src="assets/greenup.png"> -->
+			<%end %>
+			<%= flash[:alert] %>
+			<br>
+			<% if session[:uid] %>
+			<%= link_to current_user.name.upcase + "'s Dashboard", user_url(current_user) %>
+			<%= link_to "New Project", new_project_url %>
+			<%= link_to "Sign Out", signout_url %>
+			<% else %>
+			<%= link_to "Sign Up", new_user_url %>
+			<%= link_to "Log In", new_session_path %>
+			<% end %>
+		
+			</div>
+			<%= yield %>
+		</div>
+	</body>

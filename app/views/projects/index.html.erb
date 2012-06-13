@@ -1,7 +1,21 @@
-<h1>SuperUser BRAVE dashboard.</h1>
+<h1>Project Management Dashboard</h1>
+
 <ul>
+
 <% @projects.each do |project| %>
 <li><%= link_to project.title, project_url(project.id) %></li>
+
+  <% if project.is_active == true %>
+    <ul>
+      <% project.agreements.each do |agreement| %>
+      <li>
+      <p>Agreement Title: <%= agreement.title %> </p>
+      </li>
+      <%end %>
+    </ul>
+  <%end %>
 <% end %>
+
 </ul>
-<%= link_to "new project", new_project_url %>
+
+

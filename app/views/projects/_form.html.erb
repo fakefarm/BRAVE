@@ -19,15 +19,15 @@
 <br/>
 <br/>
 <%= f.label :client_email %>
-<%= f.text_field :client_email %>
-<br/>
-<br/>
-<%= f.label "Project Status" %>
-<%= f.check_box :is_active %>
+<%= f.collection_select :client_email, User.all, :email, :name %>
 <br/>
 <br/>
 <%= f.label :project_amount %>
 <%= f.text_field :project_amount %>
 <br/>
+<br/>
+
+
+
 <%= f.submit  %>
 <% end %>

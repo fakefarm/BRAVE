@@ -1,6 +1,14 @@
-<h1>All of our users</h1>
-<ul>
+<h1><%= @users.first.role %> Members</h1>
+
+<% if @users %>
+
+<%end %>
+
+<div class="users">
   <% @users.each do |user| %>
-  <li><%= link_to user.name, user_url(user.id) %></li>
-  <% end %>
+<ul> 
+  <li><%= link_to user.name.upcase, user_url(user.id) %></li>
+  <li><p><img width="100" class="photo" alt="dummypic" src="assets/pic<%= rand(0..10)%>.png"></p></li>
 </ul>
+  <% end %>
+</div>

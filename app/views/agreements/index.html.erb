@@ -1,6 +1,7 @@
-<h1>Agreements#index</h1>
-<ul>
+<h1>Agreements List</h1>
+
 <% @agreements.each do |agreement| %>
+<ul>
 <li><%= link_to agreement.title, agreement_url(agreement.id) %>
 <%= link_to "Delete", agreement_url(agreement.id), :method => :delete %> </li>
 <% end %>

@@ -1,0 +1,8 @@
+<ul id="messages">
+<% @messages.each do |message| %>
+	<li><%= message.content %> by: <%= message.user.name %></li>
+<% end %>
+</ul>
+
+<h2>Add new Message</h2>
+<%= render 'form' %>
