@@ -18,7 +18,7 @@
   <%= flash[:alert] %>  
   <br>
 	<% if session[:uid] %>
-  <%= link_to "User Dashboard", user_url(@user.id) %>
+  <%= link_to "User Dashboard", user_url(session[:uid]) %>
   <%= link_to "New Project", new_project_url %>
 	<% end %>
   <%= link_to "Sign Up", new_user_url %>
