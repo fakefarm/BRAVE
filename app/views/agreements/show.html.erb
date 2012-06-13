@@ -1,19 +1,26 @@
-<h1><%= @agreement.user.name.capitalize %></h1>
-<h2><%= @agreement.title %></h2>
-<h3><%= @agreement.description %></h3>
-<h4><%= @agreement.content %></h4>
-
-<% if @agreement.is_active? == false %>	
-	<%= form_for @agreement do |f| %>
-	<% if @project.admin == current_user %>
-		Admin agrees?
-		<%= f.radio_button :is_active_admin, :true %>
-	<% else %>
-		User agrees?
-		<%= f.radio_button :is_active_user, :true %>
-		<% end %>
-		<%= f.submit %>
+<%= form_for @agreement do |f| %>
+  <h1><%= @agreement.title %></h1>
+  <p>Agreement with <%= @agreement.project.admin.name %> for $<%= @agreement.user_amount %></p>
+  
+  <h3>Agreement Details</h3>
+  <p><%= @agreement.content %></p>
+  
+  <% if @project.admin == current_user %>
+	  <% if @agreement.is_active_admin == false %>
+	    Approve agreement?
+	    <%= f.hidden_field :is_active_admin, value: true %>
+	    <%= f.submit "Approve" %>
+	  <% end %>
+  <% else %>
+     <% if @agreement.is_active_user == false %>
+  	    Approve agreement?
+	      <%= f.hidden_field :is_active_user, value: true %>
+	      <%= f.submit "Approve" %>
+	  <% end %>
 	<% end %>
-
-	<%= link_to "Edit Agreement", edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
+	
+	
+	<% if @agreement.is_active? == false %>
+  	<%= link_to "Edit Agreement", edit_agreement_url(@agreement.id) %> <% if @agreement.is_admin == true %>(Admin)<% end %>
+  <% end %>
 <% end %>
