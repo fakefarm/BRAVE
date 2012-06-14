@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20120611180007) do
   end
 
   create_table "roles", :force => true do |t|
+    t.string   "classification"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "description"
-    t.string   "classification"
   end
 
   create_table "users", :force => true do |t|
