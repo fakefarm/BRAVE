@@ -1,17 +1,14 @@
-<h1><%= @users.first.role %> Members</h1>
+<div id="content_search">
+  <h1>Discover <%= @users.first.role %> Members</h1>
 
-<h2>Invite These Members:</h2>
-
-
-<% if @users %>
-
-<%end %>
-
-<div class="users">
+  <center>
+  <ul> 
   <% @users.each do |user| %>
-<ul> 
-  <li><%= link_to user.name.upcase, user_url(user.id) %></li>
-  <li><p><img width="100" class="photo" alt="dummypic" src="assets/pic<%= rand(0..10)%>.png"></p></li>
-</ul>
+    <li><%= link_to user.name.upcase, user_url(user.id) %>
+      <img width="100" class="photo" alt="dummypic" src="assets/pic<%= rand(0..10)%>.png">
+    <%= button_tag "ADD #{user.name.upcase}" %>
+    </li>
   <% end %>
-</div>
+  </ul>
+  </center>
+</div><!-- .content -->

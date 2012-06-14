@@ -89,6 +89,10 @@ body {
 	margin: 0 auto;
 	overflow: hidden;
 }
+
+#content_project h1 {
+  display: inline;
+}
 #projects,
 #agreements {
 	margin: 0;
@@ -184,3 +188,40 @@ img {
   font: 24;
 }
 */
+
+#searchusers {
+  float: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  display: inline;
+}
+
+#content_search {
+  background: white;
+  width: 720px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 20px;
+}
+
+#content_search ul {
+  list-style: none;
+  padding: 0;
+}
+
+#content_search ul li {
+  width: 220px;
+  display: inline-block;
+  background: red;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+#content_search ul li img {
+  display: block;
+  height: 100px;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+}
