@@ -1,0 +1,186 @@
+/* RESET */
+html``, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1, h2, h3, h4 {
+	margin-bottom: 0;
+}
+body {
+	background: #ccc; }
+	a {	
+		text-decoration: none;
+		color: #004080; }
+/* HEADER NAV */
+.headNav {
+	width: 960px;
+	margin: 0 auto;
+	background: #fff;
+	border-bottom: 3px solid blue;
+	overflow: hidden;
+}
+.headNav h1 {
+	float: left;
+	margin-right: 10px;
+}
+.headNav li {
+	display: inline-block;
+	font-size: 24px;
+	margin-top: 10px;
+}
+.headNav li.last {
+	float: right;
+	margin-right: 20px;
+}
+.headNav a {
+	}
+
+.container {
+	width: 960px;
+	margin: 0px auto 20px;
+	background: rgba(255,255,255,.5);
+	font-family: 'Helvetica', serif;
+	overflow: hidden;
+	}
+
+/* SIDEBAR */
+
+#sidebar {
+	width: 140px;
+	padding: 10px;
+	background: blue;
+	float: right;
+}
+#sidebar .new_project {
+	display: block;
+	margin: 20px 0 0;
+	padding: 5px 10px;
+	background: #fff;
+	border-radius: 5px;
+}
+	
+/* CONTENT */
+
+#content {
+	float: left;
+	width: 760px;
+	padding: 20px;
+	background: red;
+}
+#content_project {
+	width: 760px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#projects,
+#agreements {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#projects li,
+#agreements li {
+	float: left;
+	width: 210px;
+	padding: 10px;
+	background: #fff;
+	margin: 10px;
+	height: 260px;
+	list-style-type: none;
+}
+
+.pay_now {
+	padding: 20px;
+	font-size: 25px;
+	text-align: center;
+	border-radius: 10px;
+	background: green;
+	color: #eaeaea;
+	display: block;
+}
+.pay_now:hover {
+	background: blue;
+}
+
+/* FORMS */
+form#new_project,
+form#new_agreement,
+form.edit_agreement {
+	background: #fff;
+	padding: 20px;
+	width: 500px;
+	margin: 20px auto;
+}
+
+#new_project label,
+#new_agreement label,
+.edit_agreement label {
+	display: block;
+}
+form#new_agreement {
+	margin: 20px 0;
+}
+
+
+/* AGREEMENT BOXES */
+.avatar {
+	width: 50px;
+	border: 5px solid #ccc;
+	float: left;
+	margin-right: 10px;
+}
+
+
+
+/*
+
+	
+.users ul {
+  padding: 10px;
+  border: 1px solid blue;
+  width: 200px;
+  height: 200px;
+  display: inline;
+  list-style-type: none;
+}
+
+.users li{
+  list-style: none;
+  text-decoration: none;
+  float: left;
+}
+
+.h1 {
+ font-color: blue;
+  
+}
+.submit {
+  font: 20px;
+}
+
+img {
+  font: blue;
+}
+
+#roledescription {
+  font: 24;
+}
+*/

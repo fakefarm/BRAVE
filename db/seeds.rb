@@ -1,4 +1,3 @@
-if Rails.env.development?
   User.destroy_all
   Project.destroy_all
   Agreement.destroy_all
@@ -45,7 +44,7 @@ if Rails.env.development?
         
         
 puts "BE BRAVE GENTLEMEN. THIS GUILD ISN'T GOING TO BUILD ITSELF...oh, and also, data has been added"
-end
+
                                                                                               
   # Role.create classification:"0510", description:"Accounting                                        "
   #   Role.create classification:"0525", description:"Accounting Technician                             "

@@ -1,31 +1,24 @@
-<h1><%= @user.name.upcase %></h1>
+<div id ="sidebar">
+  <%= link_to "New Project", new_project_url, class: "new_project" %>
 
-<div id="searchusers">
-	<form action="<%= users_url %>" method="get">
-		<label for="keyword">Search for Other Brave Souls by:</label></br>
-		<%= collection_select :role, :description, Role.all, :description, :description %>
-		<input type="submit" name="submit" value= "BE BRAVE!"> 
-	</form>
-</div>  
+</div><!-- #sidebar -->
 
-<% if @user.agreements.find(:all, :conditions => {:is_admin => true}).present? %>
-	<h2>Admin Projects</h2>
-	<ul>
-		<% @user_projects.each do |project| %>
-		<li><%- if project.admin.name == @user.name  %><%= link_to project.title, project_path(project.id) %><% end %></li>
-		<% end %>
-	</ul>
-<% end %>
-
-<% if @user.agreements.find(:all, :conditions => {:is_admin => false}).present? %>
-	<h2>Member Projects</h2>
-	<ul>
-		<% @user_projects.each do |project| %>
-			<% if project.admin.name != current_user.name  %>
-			<li><%= link_to project.title, project_path(project.id) %> | 
-				<span>(Admin: <%= link_to project.admin.name, project.admin.name %><% end %>)</span>
-			</li>
-			<% end %>
-	</ul>
-<% else %>
-<% end %>
+<div id="content">
+  <% if @user.agreements.present? %>
+  	<ul id="projects">
+  		<% @user_projects.each do |project| %>
+  		<li>
+  		    <div>
+  		      <h2><%= link_to project.title, project_path(project.id) %></h2>
+  		      <% if project.admin == current_user %>
+  		      <p>YOU ARE ADMIN!</p>
+  		      <% end %>
+      		  <h3>$<%= project.project_amount %></h3>
+      		  <p><%= project.admin.name.capitalize %></p>
+      		  <p><% if project.is_approved? %>Project is approved<% end %></p>
+      		</div>
+  		</li>
+  		<% end %>
+  	</ul>
+  <% end %>
+</div><!-- #content -->

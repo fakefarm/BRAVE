@@ -16,5 +16,15 @@ class Project < ActiveRecord::Base
   def client
     User.find_by_email(self.client_email).name
   end
-  
+
+	def is_approved?
+		all_project_agreements = self.agreements
+		approve_project_agreements = self.agreements.where(is_active_admin: true).where(is_active_user: true)
+		if all_project_agreements.count == approve_project_agreements.count
+				return true
+			else
+				return false
+		end
+	end
+
 end

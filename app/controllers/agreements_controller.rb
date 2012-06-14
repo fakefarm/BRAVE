@@ -34,8 +34,7 @@ class AgreementsController < ApplicationController
   def update
     @agreement = Agreement.find_by_id(params[:id])
     @agreement.update_attributes(params[:agreement])
-    @agreement.save
-    redirect_to project_path(@agreement.project.id)
+    redirect_to agreement_path(@agreement)
   end
   
   
@@ -43,10 +42,10 @@ class AgreementsController < ApplicationController
       @agreement = Agreement.new(params[:agreement])
       if @agreement.save
       Notifier.invitation(@agreement).deliver
-      redirect_to projects_url, notice:"Great Stuff"
+      redirect_to project_path(@agreement.project), notice: "Great Stuff"
       else
         flash[:notice] =  "Please include relevant information"
-        redirect_to project_path(@agreement.project.id)
+        redirect_to project_path(@agreement.project)
       end
       
   end

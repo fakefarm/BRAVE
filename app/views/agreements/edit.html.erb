@@ -1,2 +1,33 @@
-<h1>Edit Your Agreement</h1>
-<%= render 'form' %>
+
+<%= form_for @agreement do |f| %>
+<h3>Edit Your Agreement</h3>
+<% if @agreement.errors.any? %>
+<div class="error_messages">
+  <h2>Form is invalid</h2>
+  <ul>
+    <% @agreement.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<br/>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br/>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<br/>
+<%= f.label :user_amount %>
+<%= f.text_field :user_amount %>
+<br/>
+<%= f.hidden_field :project_id, value: @project.id %>
+<%= f.hidden_field :is_admin, value: false %>
+<%= f.hidden_field :is_active_admin, value: false %>
+<%= f.hidden_field :is_active_user, value: false %>
+<br/>
+<br />
+<%= f.submit  %>
+<% end %>

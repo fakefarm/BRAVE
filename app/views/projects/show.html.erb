@@ -1,67 +1,49 @@
-<h1><%= @project.title.capitalize %> </h1>
-<% if @user.is_client?(@project) %>
-	Display PAY NOW!
-<% else %>
 
+<div id="searchusers">
+  <form action="<%= users_url %>" method="get">
+    <label for="keyword">Search for Other Brave Souls by:</label></br>
+    <%= collection_select :role, :description, Role.all, :description, :description %>
+    <input type="submit" name="submit" value= "BE BRAVE!"> 
+  </form>
+</div>
 
-<% if @user == @project.admin %>
-	<%= @project.client %>
-<% end %>
-
-<h2>Total Contract Value: $<%= @project.project_amount %></h2>
-
-<% if !@user_inactive_agreement.nil? %>
-	<h3>Pending Agreements</h3>
-	<%= link_to @user_inactive_agreement.title, agreement_path(@user_inactive_agreement.id) %>
-<% end %>
-
-<h3>Users in this project</h3>
-
-<ul>
-  <% @project.agreements.each do |agreement| %>
-
-  <li><%= link_to agreement.user.name.capitalize, agreement_path(agreement.id) %>
-     <% if agreement.is_admin == true %>(Admin)
-     <img width="75" class="photo" alt="pic" src="../../assets/pic<%= rand(1..7)%>.png"></li>
-</ul>
-  <%else %>
-    <%= form_for @vote do |f| %>
-    
-    <p>Rank <%=agreement.user.name.capitalize %>'s Performance:<img width="15" class="photo" alt="rating" src="../../assets/reddown.png">
-       <input type="range" name=rank value=<%=agreement.user_id%>
-       <%= image_tag "reddown.png" %>
-       <img width="15" class="photo" alt="rating" src="../../assets/greenup.png"> </p>
-        <%=   hidden_field :project_id, value: @project.id  %>
-        <%= f.hidden_field :voter_id, value: current_user.id  %>
-        <%= f.hidden_field :votee_id, value: agreement.user_id %>
-        <div class="submit"><%= f.submit "Be BRAVE!"%></div>
-      <% end %>
-    <% end %>
+<div id="content_project">
+  
+  <h1><%= @project.title.capitalize %> </h1>
+  <p> <b>Client Purpose: </b> Create a flexible, informative web site that is easy to maintain.  We prefer a friendly site 
+  with a light feel that can deliver large amounts of constantly changing information to our key audiences.  In 
+  addition to designing a user-friendly site with an intuitive interface, we ...          <i>            -- Due Date: 9/30/12 </i></p>
+    <h3>Total Project Value: $<%= @project.project_amount %></h3>
+  <% if @user.is_client?(@project) %>
+  	<a href="#" class="pay_now">Pay Now</a>
+  <% else %>
+      <ul id="agreements">
+        <% @project_agreements.each do |agreement| %>
+          <li>
+            <div>
+              <%= image_tag "pic#{rand(1..10)}.png", class: "avatar" %>
+             
+              <%= agreement.user.name.upcase %><br />
+              <% if agreement.user.name == agreement.is_admin %>
+                <%= Project Manger %>
+                <% else %>
+                <%= agreement.user.role %><br />
+              <% end %>
+              <br />
+              <br />
+              <%= link_to agreement.title, agreement_path(agreement) %><br />
+             
+              <p>$<%= agreement.user_amount %></p><br />
+              <% if agreement.is_active? %>
+              <p>Approved</p>
+              <% else %>
+              <p>Pending Approval, last updated by: ??</p>
+              <%= link_to "Edit Agreement", edit_agreement_path(agreement) %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+  <%= render '/agreements/form' %>
   <% end %>
-
-<% if @user == @project.admin %>
-Pending Agreements
-<ul>
-<% @project_agreements.each do |agreement| %>
-	<% if agreement.is_active? == false  %>
-	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
-	<% end %>
-<% end %>
-</ul>
-
-Active
-<ul>
-<% @project_agreements.each do |agreement| %>
-	<% if agreement.is_active? == true && agreement.is_admin == false %>
-	<li><%= link_to agreement.title, agreement_path(agreement.id) %></li>
-
-	<% end %>
-<% end %>
-</ul>
-<% end %>
-<% if current_user == @project.admin %>
-<h2>Send Agreement to User</h2>
-<%= render '/agreements/form' %>
-<% end %>
-
-<% end %>
+</div><!-- #content -->

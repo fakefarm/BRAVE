@@ -1,12 +1,11 @@
 class AddDescriptiontoRoles < ActiveRecord::Migration
   def up
-  remove_column :roles, :classification, :integer
-  add_column :roles, :description, :string
-  add_column :roles, :classification, :string
- 
-  
+	  add_column :roles, :description, :string
+	  change_column :roles, :classification, :string  
   end
 
   def down
+	  remove_column :roles, :description, :string
+	  change_column :roles, :classification, :integer  
   end
 end
