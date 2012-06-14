@@ -25,8 +25,5 @@
 <%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation %>
 <br/>
-<%= f.label :role %>
-<%= collection_select :role, :description, Role.all, :description, :description %>
-<%= f.submit  %>
-<% end %>
+
 

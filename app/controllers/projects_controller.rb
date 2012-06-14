@@ -51,5 +51,6 @@ class ProjectsController < ApplicationController
     @agreement = Agreement.new
     @project_agreements = @project.agreements
     @user_inactive_agreement = Agreement.where({user_id: current_user, project_id: params[:id], is_active_user: false}).first
+    
   end
 end

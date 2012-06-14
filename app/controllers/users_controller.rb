@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   before_filter :require_sign_in, :except => [:new, :create] 
 
   def index
-    if  params[:role][:description] != nil
-      @users=User.find_all_by_role(params[:role][:description])
+    if params[:role].present?
+      @users = User.find_all_by_role(params[:role][:description])
     else
-    @users = User.all
+     @users = User.all
     end
   end
 

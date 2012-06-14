@@ -2,13 +2,7 @@
   <%= link_to "New Project", new_project_url, class: "new_project" %>
 
 </div><!-- #sidebar -->
-<!-- ><div id="searchusers">
-	<form action="<%#= users_url %>" method="get">
-		<label for="keyword">Search for Other Brave Souls by:</label></br>
-		<%#= collection_select :role, :description, Role.all, :description, :description %>
-		<input type="submit" name="submit" value= "BE BRAVE!"> 
-	</form>
-</div> -->  
+
 <div id="content">
   <% if @user.agreements.present? %>
   	<ul id="projects">
