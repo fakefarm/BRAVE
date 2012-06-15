@@ -1,34 +1,44 @@
 
-<div id="searchusers">
-  <form action="<%= users_url %>" method="get">
+<!-- <div id="searchusers">
+  <form action="<%#= users_url %>" method="get">
     <label for="keyword">Search for Other Brave Souls by:</label></br>
-    <%= collection_select :role, :description, Role.all, :description, :description %>
+    <%#= collection_select :role, :description, Role.all, :description, :description %>
     <input type="submit" name="submit" value= "BE BRAVE!"> 
   </form>
-</div>
+</div> -->
 
 <div id="content_project">
-  
-  <h1><%= @project.title.capitalize %> </h1>
-  <p> <b>Client Purpose: </b> Create a flexible, informative web site that is easy to maintain.  We prefer a friendly site 
-  with a light feel that can deliver large amounts of constantly changing information to our key audiences.  In 
+  <% if @user.is_client?(@project) %>
+	<h4 class="agreement">Project Agreement</h4>
+	<h2 class="title"><%= @project.title %></h2>
+	<p>Create a flexible, informative web site that is easy to maintain.  We prefer a friendly site 
+  		with a light feel that can deliver large amounts of constantly changing information to our key audiences.  In 
+  addition to designing a user-friendly site with an intuitive interface, we...</p>
+	<h3 class="team">Project Team</h3>
+	<ul class="project_team">
+		<% @project.users.each do |user| %>
+		<li><%= image_tag "pic#{rand(1..10)}.png", class: "client_view_picture" %>
+			<h3><%= user.name %></h3>
+			<p>Chicago, IL | <%= user.role %></p>
+		</li>
+		<% end %>
+	</ul>
+	<p class="total">$<%= @project.project_amount %></p>
+	<a href="#" class="pay_now">Pay Now</a>
+  <% else %>
+	<h1><%= @project.title.capitalize %> </h1>
+  	<p> <b>Client Purpose: </b> Create a flexible, informative web site that is easy to maintain.  We prefer a friendly site 
+  		with a light feel that can deliver large amounts of constantly changing information to our key audiences.  In 
   addition to designing a user-friendly site with an intuitive interface, we ...          <i>            -- Due Date: 9/30/12 </i></p>
     <h3>Total Project Value: $<%= @project.project_amount %></h3>
-  <% if @user.is_client?(@project) %>
-  	<a href="#" class="pay_now">Pay Now</a>
-  <% else %>
-      <ul id="agreements">
+      <ul class="project_team">
         <% @project_agreements.each do |agreement| %>
           <li>
             <div>
-              <%= image_tag "pic#{rand(1..10)}.png", class: "avatar" %>
+              <%= image_tag "pic#{rand(1..10)}.png", class: "client_view_picture" %>
              
-              <%= agreement.user.name.upcase %><br />
-              <% if agreement.user.name == agreement.is_admin %>
-                <%= Project Manger %>
-                <% else %>
-                <%= agreement.user.role %><br />
-              <% end %>
+              <h3><%= agreement.user.name.upcase %></h3>
+                <p><%= agreement.user.role %> | Chicago, IL</p>
               <br />
               <br />
               <%= link_to agreement.title, agreement_path(agreement) %><br />

@@ -24,21 +24,23 @@ h1, h2, h3, h4 {
 	margin-bottom: 0;
 }
 body {
-	background: #d2d1d1; }
+	background: #d2d1d1;
+	font-family: "Cabin Condensed";
+	color: #444 }
 a {	
 		text-decoration: none;
 		color: #004080; }
+
 /* HEADER NAV */
+
 .headNav {
 	width: 960px;
 	margin: 0 auto;
-	background: #fff;
-	border-bottom: 3px solid blue;
 	overflow: hidden;
 }
-.headNav h1 {
+.headNav img {
 	float: left;
-	margin-right: 10px;
+	margin: 20px;
 }
 .headNav li {
 	display: inline-block;
@@ -50,7 +52,12 @@ a {
 	margin-right: 20px;
 }
 .headNav a {
-	}
+	color: #444;
+	text-shadow: 1px 1px 0 #fff;
+}
+.headNav a:hover {
+	color: #888;
+}
 
 .container {
 	width: 980px;
@@ -79,28 +86,14 @@ a {
 /* CONTENT */
 
 a.new_button {
-	padding: 10px;
-	color: #000;
-	text-shadow: 1px 1px 0 #fff;
-	background: #ccc;
-	font: 28px "Cabin Condensed";
 	margin: 0 0 20px 20px;
-	background-image: -webkit-linear-gradient(top, #fff, #f3f4f4); 
-	background-image:    -moz-linear-gradient(top, #fff, #f3f4f4);
-	background-image:     -ms-linear-gradient(top, #fff, #f3f4f4);
-	background-image:      -o-linear-gradient(top, #fff, #f3f4f4);
-	border-radius: 5px;
-	box-shadow: 0 0 3px rgba(0,0,0,.2);
 }
-a.new_button span {
-	margin-right: 20px;
-	font-size: 28px;
-}
+
 a.new_button:hover {
 	color: green;
 }
 #content_project {
-	width: 760px;
+	width: 960px;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -118,7 +111,7 @@ a.new_button:hover {
 	padding: 10px;
 	background: #f9f9f9;
 	border-radius: 5px;
-	box-shadow: 0 0 4px rgba(0,0,0,0.2);
+	box-shadow: 0 3px 4px rgba(0,0,0,0.2);
 	margin: 10px 20px;
 	color: #222;
 	list-style-type: none;
@@ -184,16 +177,84 @@ a.new_button:hover {
 	text-align: left;
 }
 .pay_now {
-	padding: 20px;
-	font-size: 25px;
+	padding: 5px 20px;
+	font: 50px "Cabin Condensed";
 	text-align: center;
 	border-radius: 10px;
-	background: green;
 	color: #eaeaea;
-	display: block;
+	text-shadow: 1px 1px rgba(0,0,0,.2);
+	width: 250px;
+	float: right;
+	clear: both;
+	background: #b4ddb4; /* Old browsers */
+	background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(17%,#83c783), color-stop(33%,#52b152), color-stop(67%,#008a00), color-stop(83%,#005700), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* IE10+ */
+	background: linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
 }
 .pay_now:hover {
 	background: blue;
+}
+.project_team {
+	overflow: hidden;
+	margin: 10px 0 0;
+	padding: 20px 0 ;
+	border-bottom: 5px solid #222;
+}
+.project_team li {
+	width: 286px;
+	list-style-type: none;
+	float: left;
+	margin: 0 15px 10px;
+	height: 240px;
+	text-align: center;
+	background: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0,0,0,.5);
+}
+.project_team p {
+	background: #eaeaea;
+	padding: 10px 0;
+	font: 20px "Cabin Condensed";
+	text-transform: uppercase;
+	color: #222;
+}
+.client_view_picture {
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	padding: 5px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5);
+	margin: 10px auto 0;
+	display: block;
+}
+#content_project .total {
+	clear: both;
+	float: right;
+	margin: 0;
+	font: 100px "cabin condensed";
+	background: none;
+}
+h3.team {
+	font: 23px "Cabin Condensed";
+	color: #222;
+	border-bottom: 5px solid #222;
+	text-transform: uppercase;
+}
+h2.title {
+	font: 100px "Cabin Condensed";
+	text-align: center;
+	color: #222;
+	margin: 0;
+}
+h4.agreement {
+	font: 30px "Cabin Condensed";
+	text-align: center;
+	color: #222;
+	margin: 0;
 }
 
 /* FORMS */
