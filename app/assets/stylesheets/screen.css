@@ -24,8 +24,8 @@ h1, h2, h3, h4 {
 	margin-bottom: 0;
 }
 body {
-	background: #ccc; }
-	a {	
+	background: #d2d1d1; }
+a {	
 		text-decoration: none;
 		color: #004080; }
 /* HEADER NAV */
@@ -53,9 +53,9 @@ body {
 	}
 
 .container {
-	width: 960px;
+	width: 980px;
+	padding: 20px;
 	margin: 0px auto 20px;
-	background: rgba(255,255,255,.5);
 	font-family: 'Helvetica', serif;
 	overflow: hidden;
 	}
@@ -78,11 +78,26 @@ body {
 	
 /* CONTENT */
 
-#content {
-	float: left;
-	width: 760px;
-	padding: 20px;
-	background: red;
+a.new_button {
+	padding: 10px;
+	color: #000;
+	text-shadow: 1px 1px 0 #fff;
+	background: #ccc;
+	font: 28px "Cabin Condensed";
+	margin: 0 0 20px 20px;
+	background-image: -webkit-linear-gradient(top, #fff, #f3f4f4); 
+	background-image:    -moz-linear-gradient(top, #fff, #f3f4f4);
+	background-image:     -ms-linear-gradient(top, #fff, #f3f4f4);
+	background-image:      -o-linear-gradient(top, #fff, #f3f4f4);
+	border-radius: 5px;
+	box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+a.new_button span {
+	margin-right: 20px;
+	font-size: 28px;
+}
+a.new_button:hover {
+	color: green;
 }
 #content_project {
 	width: 760px;
@@ -91,7 +106,7 @@ body {
 }
 #projects,
 #agreements {
-	margin: 0;
+	margin: 20px 0 0;
 	padding: 0;
 	overflow: hidden;
 }
@@ -99,14 +114,75 @@ body {
 #projects li,
 #agreements li {
 	float: left;
-	width: 210px;
+	width: 266px;
 	padding: 10px;
-	background: #fff;
-	margin: 10px;
-	height: 260px;
+	background: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.2);
+	margin: 10px 20px;
+	color: #222;
 	list-style-type: none;
+	font-family: "Cabin Condensed";
 }
-
+#projects li h2 {
+	text-align: center;
+	text-transform: uppercase;
+	padding: 3px 0;
+	border-top: 1px solid #d2d2d2;
+	border-bottom: 1px solid #d2d2d2;
+}
+#projects li h2 a {
+	color: #222;
+}
+.client {
+	font-size: 22px;
+	margin-bottom: 0;
+}
+.admin {
+	font-size: 16px;
+	margin-top: 0;
+	float: left;
+}
+.money {
+	font-size: 35px;
+	float: right;
+	margin: 5px 0;
+	text-shadow: 1px 1px 0 #fff;
+}
+.project_members {
+	background: #eaeaea;
+	margin: 0 -10px;
+	padding: 10px 0;
+	clear: both;
+	overflow: hidden;
+}
+.project_members ul {
+	margin: 0;
+	padding: 0;
+}
+.members {
+	float: left;
+	text-transform: uppercase;
+	font-size: 20px;
+	margin: 45px 0 0 15px;
+}
+.pending,
+.active {
+	float: right;
+	margin: 0 10px 0px 0;
+}
+.project_members img {
+	width: 40px;
+	height: 40px;
+	border-radius: 100px;
+	float: right;
+	margin: 10px 5px 0 0;
+}
+.status {
+	float: right;
+	width: 50px;
+	text-align: left;
+}
 .pay_now {
 	padding: 20px;
 	font-size: 25px;

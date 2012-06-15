@@ -1,24 +1,31 @@
-<div id ="sidebar">
-  <%= link_to "New Project", new_project_url, class: "new_project" %>
+<a href="/projects/new" class="new_button"><span>+</span>New Project</a>
 
-</div><!-- #sidebar -->
-
-<div id="content">
-  <% if @user.agreements.present? %>
-  	<ul id="projects">
-  		<% @user_projects.each do |project| %>
-  		<li>
-  		    <div>
-  		      <h2><%= link_to project.title, project_path(project.id) %></h2>
-  		      <% if project.admin == current_user %>
-  		      <p>YOU ARE ADMIN!</p>
-  		      <% end %>
-      		  <h3>$<%= project.project_amount %></h3>
-      		  <p><%= project.admin.name.capitalize %></p>
-      		  <p><% if project.is_approved? %>Project is approved<% end %></p>
-      		</div>
-  		</li>
-  		<% end %>
-  	</ul>
-  <% end %>
-</div><!-- #content -->
+<% if @user.agreements.present? %>
+	<ul id="projects">
+		<% @user_projects.each do |project| %>
+		<li>
+		    <div>
+		      <h2><%= link_to project.title, project_path(project.id) %></h2>
+		      <p class="client">Client: Steve Nelsen</p>
+	  <% if project.admin == current_user %>
+		      <p class="admin"><%= image_tag "star.png" %>(I am admin)</p>
+		      <% end %>
+    		  <p class="money">$<%= project.project_amount %></p>
+	  <div class="project_members">
+		<p class="members">Members</p>
+		<div class="pending">
+		<p class="status">Pending</p>
+			<%= image_tag "pic#{rand(1..10)}.png", class: "pic" %>
+			<%= image_tag "pic#{rand(1..10)}.png", class: "pic" %>
+		</div><!-- .pending -->
+		<div class="active">
+			<p class="status">Active</p>
+			<%= image_tag "pic#{rand(1..10)}.png", class: "pic" %>
+			<%= image_tag "pic#{rand(1..10)}.png", class: "pic" %>
+		</div><!-- active -->
+	  </div>
+    		</div>
+		</li>
+		<% end %>
+	</ul>
+<% end %>
